@@ -486,10 +486,10 @@
     - Sidearm
 
 - type: entity
-  name: disabler
+  name: disabler  #
   parent: [ WeaponDisablerPractice, BaseSecurityCommandContraband ]
   id: WeaponDisabler
-  description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
+  description: A Standard Nanotrasen weapon that that shoot ionized gas, with two modes. One weakens the target, the other kills.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/disabler.rsi
@@ -508,6 +508,12 @@
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisabler
     fireCost: 62.5
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BulletDisabler
+      fireCost: 62.5
+    - proto: BulletDisablerLaser
+      fireCost: 62.5
   - type: GuideHelp
     guides:
     - Security

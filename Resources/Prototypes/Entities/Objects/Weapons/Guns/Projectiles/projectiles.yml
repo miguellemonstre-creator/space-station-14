@@ -249,10 +249,12 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.15,-0.3,0.15,0.3"
+          bounds: "-0.1,-0.1,0.1,0.1" #Size of the projectile has been nerfed cuz it caused collision issues near walls
         hard: false
         mask:
         - Opaque
+        - Impassable 
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
@@ -265,6 +267,25 @@
     soundHit:
       collection: WeakHit
     forceSound: true
+
+- type: entity
+  name : laser bolt
+  id: BulletDisablerLaser
+  parent: BulletDisabler
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: heavylaser
+      shader: unshaded
+  - type: StaminaDamageOnCollide
+    damage: 0
+  - type: Projectile
+    impactEffect: BulletImpactEffectOrangeDisabler
+    damage:
+      types:
+        Heat: 17
 
 - type: entity
   name : disabler bolt practice
@@ -288,10 +309,12 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.15,-0.3,0.15,0.3"
+          bounds: "-0.1,-0.1,0.1,0.1"
         hard: false
         mask:
         - Opaque
+        - Impassable
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
